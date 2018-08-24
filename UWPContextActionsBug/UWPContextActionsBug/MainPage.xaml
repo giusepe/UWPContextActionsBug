@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:UWPContextActionsBug"
+             x:Class="UWPContextActionsBug.MainPage">
+
+    <StackLayout BackgroundColor="Blue" Padding="5">
+        <Button Command="{Binding AddListItemCommand}" Text="Add an item"></Button>
+        <StackLayout BackgroundColor="Silver" Padding="5">
+            <ListView ItemsSource="{Binding ItemCollection}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Command="{Binding ToggleMarkAsRead}" Text="Toggle read" />
+                                <MenuItem Command="{Binding Remove}" Text="Remove" />
+                            </ViewCell.ContextActions>
+                            <StackLayout BackgroundColor="Gray" Padding="2">
+                                <StackLayout BackgroundColor="White" Padding="2">
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding IsRead, StringFormat='Read: {0}'}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
